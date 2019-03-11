@@ -1,0 +1,10 @@
+# GET home
+GET http://localhost:4000/
+# GET snippet
+GET http://localhost:4000/snippet
+
+# GET snippet by id
+GET http://localhost:4000/snippet/1
+
+# CREATE snippet
+POST http://localhost:4000/snippet/create

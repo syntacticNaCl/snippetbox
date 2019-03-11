@@ -1,0 +1,27 @@
+version: '3'
+services:
+  db:
+    container_name: snippetbox-mysql
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DBROOTPASS}
+      MYSQL_DATABASE: snippetbox
+      MYSQL_USER: snippetbox
+      MYSQL_PASSWORD: ${DBUSERPASS}
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+      - ./data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+  db-test:
+    container_name: snippetbox-mysql-test
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: snippetboxtest
+      MYSQL_USER: snippetboxtest
+      MYSQL_PASSWORD: testpass
+    volumes:
+      - ./sql/test:/docker-entrypoint-initdb.d
+    ports:
+      - "33061:3306"
